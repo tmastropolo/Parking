@@ -10,7 +10,7 @@ public class Time {
 int seven = 7;
 int noon = 12;
 
-public Date  StartTime (Date d) throws ParseException {
+public Date  StartTime () throws ParseException {
     int hour = new Random().nextInt((12 - 7) +1) +7;
     String time = Integer.toString(hour);
     DateFormat sdf = new SimpleDateFormat("hh");
@@ -18,7 +18,7 @@ public Date  StartTime (Date d) throws ParseException {
     return date;
 }
 
-    public  Date FinishTime (Date f) throws ParseException {
+    public  Date FinishTime () throws ParseException {
         int hour = new Random().nextInt((11 - 1) +1) +1;
         String time = Integer.toString(hour);
         DateFormat sdf = new SimpleDateFormat("hh");

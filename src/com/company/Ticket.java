@@ -6,125 +6,81 @@ import java.text.ParseException;
 import java.util.Date;
 
 public class Ticket {
+    int carID;
 
-
-    int idcount = 0;
-    int ticketID;
-    Date strDate;
-    Date finDate;
-    double tickTotal;
-    double chkIntotal;
-    int LostTick;
-    double overall;
-
-
-    public double getBill() {
-        return bill;
+    public int getCarsGarage() {
+        return carsGarage;
+    }
+    /*Number of cars in garage */
+    public void setCarsGarage(int carsGarage) {
+        carsGarage ++;
+        this.carsGarage = carsGarage;
     }
 
-    public void setBill(double bill) {
-        this.bill = bill;
+    public int getCarsLost() {
+        return carsLost;
     }
 
-    double bill;
+    //Number of Cars Lost
+    public void setCarsLost(int carsLost) {
+        carsLost ++;
+        this.carsLost = carsLost;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    //What time they enter the garage
+    public void setStartTime(Date startTime) throws ParseException {
+        this.startTime = time.StartTime();
+    }
+
+    public Date getFinTime() {
+        return finTime;
+    }
+
+    //What time they leave the garage
+    public void setFinTime(Date finTime) throws ParseException {
+        this.finTime = time.FinishTime();
+    }
+
+    public double getTickCost() {
+        return tickCost;
+    }
+
+    public void setTickCost(int tickCost) {
+        this.tickCost = tickCost;
+    }
+
+    public double getEndOfDay() {
+        return endOfDay;
+    }
+
+    public void setEndOfDay(int endOfDay) {
+        this.endOfDay = endOfDay;
+    }
+
+    public double getFinalTotal() {
+        return finalTotal;
+    }
+
+    //Lost tickets+ reg tickets
+    public void setFinalTotal(double finalTotal) {
+        finalTotal = carsLost * 25.00 ;
+        this.finalTotal = finalTotal;
+    }
+
+
+    int carsGarage;
+    int carsLost;
+    Date startTime;
+    Date finTime;
+    double tickCost;
+    double endOfDay;
+    double finalTotal;
     Time time = new Time();
-
-    public int getTicketID() {
-        return ticketID;
-    }
-
-    public void setTicketID(int ticketID) {
-        ticketID++;
-        this.ticketID = ticketID;
-    }
-
-    public Date getStrDate() {
-        return strDate;
-    }
-
-    public void setStrDate(Date strDate) throws ParseException {
-        this.strDate = time.StartTime(strDate);
-    }
-
-    public Date getFinDate() {
-        return finDate;
-    }
-
-    public void setFinDate(Date finDate) throws ParseException {
-        this.finDate = time.FinishTime(finDate);
-    }
-
-    public double getTickTotal() {
-        return tickTotal;
-    }
-
-    public void setTickTotal(double tickTotal) {
-        this.tickTotal = tickTotal;
-    }
-
-    public double getChkIntotal() {
-        return chkIntotal;
-    }
-
-    public void setChkIntotal(double chkIntotal) {
-        this.chkIntotal = chkIntotal;
-    }
-
-    public int getLostTick() {
-        return LostTick;
-    }
-
-    public void setLostTick(int lostTick) {
-        LostTick = lostTick;
-    }
-
-    public double getOverall() {
-        return overall;
-    }
-
-    public void setOverall(double overall) {
-        this.overall = overall;
-    }
-
-    public Long difference  () throws ParseException {
-        strDate = time.StartTime(strDate);
-        finDate= time.FinishTime(finDate);
-        long diff = finDate.getTime() - strDate.getTime();
-        long diffHours = diff / (60*60*1000)%24;
-        return diffHours;
-
-    }
-
-    public class Cars {
-
-
-
-        public
-
-
-        PrintWriter outFile = new PrintWriter(new BufferWriter(new FileWriter(Garage.txt)));
-
-
-    }
-
-    public double price (Long d) throws ParseException {
-        double hrs = d.doubleValue();
-        long diffhours = difference();
-        if (hrs > 3){
-            bill = 5.00;
-
-        }
-        else 
-        {
-            if(diffhours <= 10){
-                bill = 5.00 + (diffhours * 1.00);
-            }
-            else {
-                bill = 15.00;
-            }
-        }
-        return bill;
-    }
+    Car car = new Car();
 
 
 
