@@ -1,18 +1,22 @@
 package com.company;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 
-    public static Date main(String[] args) throws ParseException {
+    public static Date main(String[] args) throws ParseException, IOException {
 	// write your code here
 
         Main obj = new Main();
 
         Ticket tick = new Ticket();
         Time time = new Time();
+        Car car = new Car();
 
 
 
@@ -101,5 +105,17 @@ public class Main {
 
 
         return prkStart;
+    }
+
+    public static void WritetoFile() throws IOException {
+        Car car = new Car();
+        FileWriter fileWriter = new FileWriter(Garage.txt);
+        fileWriter.write(String.valueOf(car));
+        fileWriter.close();
+    }
+
+    public static void ReadFile(){
+        PrintWriter printWriter = new PrintWriter(Garage.txt);
+        for PrintWriter
     }
 }
