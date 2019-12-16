@@ -3,6 +3,8 @@ package com.company;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class Main {
         Date prkStart = tick.getStrDate();
         Date parkfin = tick.getFinDate();
         double total = 0.00;
-        double cktotal;
+        double cktotal = 0.00;
 
         double finaltotal = 0;
         int numtickets = 0;
@@ -41,11 +43,8 @@ public class Main {
             choice = key.nextInt();
 
             if (choice == 1) {
-                System.out.println("Best Value Parkig Garage");
-                System.out.println("========================");
-                System.out.println("1 - Check/In");
-                System.out.println("2 - Close Garage");
-                System.out.print("=> ");
+                // display ticket
+                tick.DisplayIn();
                 int in = key.nextInt();
 
                 if (in == 1){
@@ -53,23 +52,16 @@ public class Main {
                     break;
                 }
                 else if (in == 2){
-
-                        System.out.println("Best Value Parking Garage");
-                        System.out.println("=========================");
-                        System.out.println("Activity to Date");
-                        System.out.println("$" + cktotal + " was collected from " + numtickets + " Check Ins");
-                        System.out.println("$" + losttotal + " was collected from " + numlost + " Lost Tickets");
-                        System.out.println("$" + finaltotal + " was collected overall");
+                    // display end of day
+                    tick.DisplayEnd(cktotal, numtickets, numlost, losttotal, finaltotal);
 
                 }
             }
 
             else if (choice == 2) {
-                System.out.println("Best Value Parkig Garage");
-                System.out.println("========================");
-                System.out.println("1 - Check/Out");
-                System.out.println("2 - Lost Ticket");
-                System.out.print("=> ");
+                //display out
+
+                tick.DisplayOut();
                 int out = key.nextInt();
 
                 if (out == 1){
@@ -77,23 +69,15 @@ public class Main {
                     prkStart = ticket.getStrDate();
                     parkfin = ticket.getFinDate();
                     prked = ticket.difference();
-                    System.out.println("Best Value Parkig Garage");
-                    System.out.println("========================");
-                    System.out.println("Receipt for a vehicle id " + id);
-                    System.out.println(prked + " hours parked  " + prkStart + "am - " + parkfin + "pm");
-                    System.out.println("$" + total);
+                    //Car Exit
+                    tick.DisplayCustomer(prkStart, parkfin, prked, total, id);
 
                 }
 
                 else if (out == 2){
-                    System.out.println("Best Value Parking Garage");
-                    System.out.println("=========================");
-                    System.out.println("Receipt for a vehicle id " + id);
-                    System.out.println("Lost Ticket");
-                    System.out.println("$25.00");
+                    // Display Lost
                     numlost++;
-
-
+                    tick.DisplayLost();
 
                 }
 
@@ -110,12 +94,21 @@ public class Main {
     public static void WritetoFile() throws IOException {
         Car car = new Car();
         FileWriter fileWriter = new FileWriter(Garage.txt);
-        fileWriter.write(String.valueOf(car));
+        fileWriter.write(String.valueOf(car.carID +"," + car.entrance));
         fileWriter.close();
     }
 
-    public static void ReadFile(){
-        PrintWriter printWriter = new PrintWriter(Garage.txt);
-        for PrintWriter
+    public static void ReadFile() throws IOException {
+        Car car = new Car();
+        Path path = Paths.get(Garage.txt);
+        Scanner scanner = new Scanner(path);
+        while(scanner.hasNextLine()){
+            String line = scanner.nextLine();
+            String[] ticket = line.split(",");
+            car.carID = ticket[0];
+        }
+
     }
+
+    public long
 }

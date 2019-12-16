@@ -82,6 +82,47 @@ public class Ticket {
     Time time = new Time();
     Car car = new Car();
 
+    public void DisplayIn(){
+        System.out.println("Best Value Parkig Garage");
+        System.out.println("========================");
+        System.out.println("1 - Check/In");
+        System.out.println("2 - Close Garage");
+        System.out.print("=> ");
+
+    }
+
+    public void DisplayEnd(double cktotal, int numtickets, int numLost, double lost, double finalTotal ) {
+        System.out.println("Best Value Parking Garage");
+        System.out.println("=========================");
+        System.out.println("Activity to Date");
+        System.out.println("$" + cktotal + " was collected from " + numtickets + " Check Ins");
+        System.out.println("$" + lost + " was collected from " + numLost + " Lost Tickets");
+        System.out.println("$" + finalTotal + " was collected overall");
+    }
+
+    public void DisplayOut(){
+        System.out.println("Best Value Parkig Garage");
+        System.out.println("========================");
+        System.out.println("1 - Check/Out");
+        System.out.println("2 - Lost Ticket");
+        System.out.print("=> ");
+    }
+
+    public void DisplayCustomer(Date startTime, Date finTime, long prkTime, double total, int carID){
+        System.out.println("Best Value Parkig Garage");
+        System.out.println("========================");
+        System.out.println("Receipt for a vehicle id " + carID//3`1 q);
+        System.out.println(prkTime + " hours parked  " + startTime + "am - " + finalTotal + "pm");
+        System.out.println("$" + total);
+    }
+
+    public void DisplayLost(){
+        System.out.println("Best Value Parking Garage");
+        System.out.println("=========================");
+        System.out.println("Receipt for a vehicle id " + id);
+        System.out.println("Lost Ticket");
+        System.out.println("$25.00");
+    }
 
 
 
